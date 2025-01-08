@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crisis Relief</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #ffefba, #ffffff);
+      color: #333;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    /* Container Styling */
+    .container {
+      width: 90%;
+      max-width: 600px;
+      padding: 20px;
+      
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    /* Logo Styling */
+    .logo {
+      width: 120px;
+      height: auto;
+      margin: 0 auto 20px;
+    }
+
+    /* Heading Styles */
+    h1 {
+      font-size: 32px;
+      color: #ff6b6b;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 18px;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    /* Form Styles */
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      background: #ff6b6b;
+      color: white;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #e63946;
+    }
+
+    /* Navigation Buttons */
+    .nav-buttons button {
+      display: inline-block;
+      width: 45%;
+      margin: 5px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    /* Resources Page List Styling */
+    .resource-list {
+      text-align: left;
+      margin-top: 20px;
+    }
+
+    .resource-item {
+      padding: 10px;
+      background: #f4f4f4;
+      border: 1px solid #ccc;
+      margin: 10px 0;
+      border-radius: 5px;
+    }
+
+  </style>
+</head>
+<body>
+  <!-- User and Volunteer Login Page -->
+  <div class="container" id="loginPage">
+    <img src="https://cdn.glitch.global/67885ad7-c8e0-4ca8-bc04-edd9231aa4a5/crisesrelief.png?v=17363" alt="Crisis Relief Logo" class="logo" width="200" height="300">
+    <h1>Welcome to Crisis Relief</h1>
+    <p>Connecting you to resources in times of need</p>
+    <div id="loginOptions">
+      <button id="userLoginButton">User Login</button>
+      <button id="volunteerLoginButton">Volunteer Login</button>
+    </div>
+  </div>
+
+  <!-- User Login Form -->
+  <div class="container hidden" id="userLoginForm">
+    <h1>User Login</h1>
+    <form id="userLogin">
+      <input type="email" id="userEmail" placeholder="Enter your email" required>
+      <input type="password" id="userPassword" placeholder="Enter your password" required>
+      <button type="submit">Login</button>
+    </form>
+    <button id="backToLoginOptions1">Back</button>
+  </div>
+
+  <!-- Volunteer Login Form -->
+  <div class="container hidden" id="volunteerLoginForm">
+    <h1>Volunteer Login</h1>
+    <form id="volunteerLogin">
+      <input type="email" id="volunteerEmail" placeholder="Enter your email" required>
+      <input type="password" id="volunteerPassword" placeholder="Enter your password" required>
+      <button type="submit">Login</button>
+    </form>
+    <button id="backToLoginOptions2">Back</button>
+  </div>
+
+  <!-- Real-Time Resources Page -->
+  <div class="container hidden" id="resourcesPage">
+    <h1>Real-Time Resources</h1>
+    <p>Select an option to check real-time availability:</p>
+    <div class="nav-buttons">
+      <button id="shelterAvailability">Shelter Availability</button>
+      <button id="foodAvailability">Food Availability</button>
+      <button id="waterAvailability">Water Availability</button>
+      <button id="medicalAidAvailability">Medical Aid Availability</button>
+    </div>
+    <button id="backToLogin">Back to Login</button>
+  </div>
+
+  <!-- Volunteer Resources Page -->
+  <div class="container hidden" id="volunteerResourcesPage">
+    <h1>Volunteer Resources</h1>
+    <div class="resource-item">Resource: Emergency Shelter Setup</div>
+    <div class="resource-item">Resource: Food Distribution Support</div>
+    <div class="resource-item">Resource: Water Supply Coordination</div>
+    <div class="resource-item">Resource: Medical Aid Assistance</div>
+    <button id="backToResourcesFromVolunteer">Back to Resources</button>
+  </div>
+
+  <!-- New Resource Pages -->
+
+  <!-- Shelter Resources Page -->
+  <div class="container hidden" id="shelterPage">
+    <h1>Shelter Availability</h1>
+    <div class="resource-item">Location: Downtown Shelter, Beds available: 25</div>
+    <div class="resource-item">Location: Northside Shelter, Beds available: 30</div>
+    <div class="resource-item">Location: West Park Shelter, Beds available: 40</div>
+    <button id="backToResources">Back to Resources</button>
+  </div>
+
+  <!-- Food Resources Page -->
+  <div class="container hidden" id="foodPage">
+    <h1>Food Availability</h1>
+    <div class="resource-item">Location: Food Bank, Meals available: 500</div>
+    <div class="resource-item">Location: Community Kitchen, Meals available: 300</div>
+    <div class="resource-item">Location: Soup Kitchen, Meals available: 450</div>
+    <button id="backToResources2">Back to Resources</button>
+  </div>
+
+  <!-- Water Resources Page -->
+  <div class="container hidden" id="waterPage">
+    <h1>Water Availability</h1>
+    <div class="resource-item">Location: River Water Station, Bottles available: 2000</div>
+    <div class="resource-item">Location: North Creek Station, Bottles available: 1500</div>
+    <div class="resource-item">Location: City Square Station, Bottles available: 2500</div>
+    <button id="backToResources3">Back to Resources</button>
+  </div>
+
+  <!-- Medical Resources Page -->
+  <div class="container hidden" id="medicalPage">
+    <h1>Medical Aid Availability</h1>
+    <div class="resource-item">Location: City Hospital, Beds available: 50</div>
+    <div class="resource-item">Location: Emergency Clinic, Beds available: 20</div>
+    <div class="resource-item">Location: Red Cross Medical Center, Beds available: 35</div>
+    <button id="backToResources4">Back to Resources</button>
+  </div>
+
+  <script>
+    // Page elements
+    const loginPage = document.getElementById('loginPage');
+    const userLoginForm = document.getElementById('userLoginForm');
+    const volunteerLoginForm = document.getElementById('volunteerLoginForm');
+    const resourcesPage = document.getElementById('resourcesPage');
+    const volunteerResourcesPage = document.getElementById('volunteerResourcesPage');
+    const userLoginButton = document.getElementById('userLoginButton');
+    const volunteerLoginButton = document.getElementById('volunteerLoginButton');
+    const backToLoginOptions1 = document.getElementById('backToLoginOptions1');
+    const backToLoginOptions2 = document.getElementById('backToLoginOptions2');
+    const backToLogin = document.getElementById('backToLogin');
+    const backToResourcesFromVolunteer = document.getElementById('backToResourcesFromVolunteer');
+
+    // Resource pages
+    const shelterPage = document.getElementById('shelterPage');
+    const foodPage = document.getElementById('foodPage');
+    const waterPage = document.getElementById('waterPage');
+    const medicalPage = document.getElementById('medicalPage');
+
+    // Navigate to User Login Form
+    userLoginButton.addEventListener('click', () => {
+      loginPage.classList.add('hidden');
+      userLoginForm.classList.remove('hidden');
+    });
+
+    // Navigate to Volunteer Login Form
+    volunteerLoginButton.addEventListener('click', () => {
+      loginPage.classList.add('hidden');
+      volunteerLoginForm.classList.remove('hidden');
+    });
+
+    // Back to Login Options from User Login
+    backToLoginOptions1.addEventListener('click', () => {
+      userLoginForm.classList.add('hidden');
+      loginPage.classList.remove('hidden');
+    });
+
+    // Back to Login Options from Volunteer Login
+    backToLoginOptions2.addEventListener('click', () => {
+      volunteerLoginForm.classList.add('hidden');
+      loginPage.classList.remove('hidden');
+    });
+
+    // Navigate to Real-Time Resources Page after Login
+    document.getElementById('userLogin').addEventListener('submit', (e) => {
+      e.preventDefault();
+      userLoginForm.classList.add('hidden');
+      resourcesPage.classList.remove('hidden');
+    });
+
+    document.getElementById('volunteerLogin').addEventListener('submit', (e) => {
+      e.preventDefault();
+      volunteerLoginForm.classList.add('hidden');
+      volunteerResourcesPage.classList.remove('hidden');
+    });
+
+    // Back to Login Options from Resources Page
+    backToLogin.addEventListener('click', () => {
+      resourcesPage.classList.add('hidden');
+      loginPage.classList.remove('hidden');
+    });
+
+    // Back to Resources from Volunteer Resources Page
+    backToResourcesFromVolunteer.addEventListener('click', () => {
+      volunteerResourcesPage.classList.add('hidden');
+      resourcesPage.classList.remove('hidden');
+    });
+
+    // Navigate to specific resource pages
+    document.getElementById('shelterAvailability').addEventListener('click', () => {
+      resourcesPage.classList.add('hidden');
+      shelterPage.classList.remove('hidden');
+    });
+
+    document.getElementById('foodAvailability').addEventListener('click', () => {
+      resourcesPage.classList.add('hidden');
+      foodPage.classList.remove('hidden');
+    });
+
+    document.getElementById('waterAvailability').addEventListener('click', () => {
+      resourcesPage.classList.add('hidden');
+      waterPage.classList.remove('hidden');
+    });
+
+    document.getElementById('medicalAidAvailability').addEventListener('click', () => {
+      resourcesPage.classList.add('hidden');
+      medicalPage.classList.remove('hidden');
+    });
+
+    // Back to Resources from each resource page
+    document.getElementById('backToResources').addEventListener('click', () => {
+      shelterPage.classList.add('hidden');
+      resourcesPage.classList.remove('hidden');
+    });
+    document.getElementById('backToResources2').addEventListener('click', () => {
+      foodPage.classList.add('hidden');
+      resourcesPage.classList.remove('hidden');
+    });
+    document.getElementById('backToResources3').addEventListener('click', () => {
+      waterPage.classList.add('hidden');
+      resourcesPage.classList.remove('hidden');
+    });
+    document.getElementById('backToResources4').addEventListener('click', () => {
+      medicalPage.classList.add('hidden');
+      resourcesPage.classList.remove('hidden');
+    });
+  </script>
+</body>
+</html>
