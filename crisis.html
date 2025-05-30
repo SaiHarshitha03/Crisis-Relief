@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Crisis Relief</title>
   <style>
     /* General Styles */
@@ -10,7 +10,7 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background: linear-gradient(135deg, #ffefba, #ffffff);
+      background: linear-gradient(to right, #ffefba, #ffffff);
       color: #333;
       height: 100vh;
       display: flex;
@@ -21,13 +21,13 @@
 
     /* Container Styling */
     .container {
-      width: 90%;
-      max-width: 600px;
+      width: 100%;
       padding: 20px;
-      
-      background: #ffffff;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin: 0 auto;
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
       text-align: center;
     }
 
@@ -60,6 +60,7 @@
 
     input {
       width: 100%;
+      max-width: 400px;
       padding: 12px;
       margin: 10px 0;
       border: 1px solid #ccc;
@@ -69,6 +70,7 @@
 
     button {
       width: 100%;
+      max-width: 400px;
       padding: 12px;
       margin: 10px 0;
       border: none;
@@ -84,13 +86,35 @@
       background: #e63946;
     }
 
-    /* Navigation Buttons */
-    .nav-buttons button {
-      display: inline-block;
-      width: 45%;
-      margin: 5px;
+    /* Navigation Buttons - UPDATED */
+    .nav-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
     }
 
+    .nav-buttons button {
+      flex: 1 1 150px;
+      max-width: 180px;
+      padding: 12px 20px;
+      border-radius: 8px;
+      background: #ff6b6b;
+      color: white;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s, box-shadow 0.3s;
+      box-shadow: 0 4px 8px rgba(255, 107, 107, 0.3);
+    }
+
+    .nav-buttons button:hover {
+      background: #e63946;
+      box-shadow: 0 6px 12px rgba(230, 57, 70, 0.5);
+    }
+
+    /* Hidden class */
     .hidden {
       display: none;
     }
@@ -101,20 +125,25 @@
       margin-top: 20px;
     }
 
-    .resource-item {
-      padding: 10px;
-      background: #f4f4f4;
-      border: 1px solid #ccc;
-      margin: 10px 0;
-      border-radius: 5px;
-    }
+  .resource-item {
+  width: 60%; /* Make it narrower */
+  max-width: 500px; /* Limit max width */
+  margin: 10px auto; /* Center horizontally */
+  padding: 10px 15px; /* Better spacing */
+  background: #f4f4f4;
+  border: 1px solid #ccc;
+  border-radius: 6px; /* Slightly rounded corners */
+  text-align: center;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.05); /* Soft shadow for depth */
+}
+
 
   </style>
 </head>
 <body>
   <!-- User and Volunteer Login Page -->
   <div class="container" id="loginPage">
-    <img src="https://cdn.glitch.global/67885ad7-c8e0-4ca8-bc04-edd9231aa4a5/crisesrelief.png?v=17363" alt="Crisis Relief Logo" class="logo" width="200" height="300">
+    <img src="https://cdn.glitch.global/67885ad7-c8e0-4ca8-bc04-edd9231aa4a5/crisesrelief.png?v=17363" alt="Crisis Relief Logo" class="logo" width="200" height="300" />
     <h1>Welcome to Crisis Relief</h1>
     <p>Connecting you to resources in times of need</p>
     <div id="loginOptions">
@@ -127,8 +156,8 @@
   <div class="container hidden" id="userLoginForm">
     <h1>User Login</h1>
     <form id="userLogin">
-      <input type="email" id="userEmail" placeholder="Enter your email" required>
-      <input type="password" id="userPassword" placeholder="Enter your password" required>
+      <input type="email" id="userEmail" placeholder="Enter your email" required />
+      <input type="password" id="userPassword" placeholder="Enter your password" required />
       <button type="submit">Login</button>
     </form>
     <button id="backToLoginOptions1">Back</button>
@@ -138,8 +167,8 @@
   <div class="container hidden" id="volunteerLoginForm">
     <h1>Volunteer Login</h1>
     <form id="volunteerLogin">
-      <input type="email" id="volunteerEmail" placeholder="Enter your email" required>
-      <input type="password" id="volunteerPassword" placeholder="Enter your password" required>
+      <input type="email" id="volunteerEmail" placeholder="Enter your email" required />
+      <input type="password" id="volunteerPassword" placeholder="Enter your password" required />
       <button type="submit">Login</button>
     </form>
     <button id="backToLoginOptions2">Back</button>
@@ -157,16 +186,22 @@
     </div>
     <button id="backToLogin">Back to Login</button>
   </div>
+<!-- Volunteer Resources Page -->
+<div class="container hidden" id="volunteerResourcesPage">
+  <h1>Volunteer Dashboard</h1>
 
-  <!-- Volunteer Resources Page -->
-  <div class="container hidden" id="volunteerResourcesPage">
-    <h1>Volunteer Resources</h1>
-    <div class="resource-item">Resource: Emergency Shelter Setup</div>
-    <div class="resource-item">Resource: Food Distribution Support</div>
-    <div class="resource-item">Resource: Water Supply Coordination</div>
-    <div class="resource-item">Resource: Medical Aid Assistance</div>
-    <button id="backToResourcesFromVolunteer">Back to Resources</button>
-  </div>
+  <h3 style="margin-top: 20px; color: #333;">Available Tasks</h3>
+  <div class="resource-item">🛖 Emergency Shelter Setup</div>
+  <div class="resource-item">🍱 Food Distribution</div>
+  <div class="resource-item">🚰 Water Supply Coordination</div>
+  <div class="resource-item">🩺 Medical Aid Assistance</div>
+
+  <h3 style="margin-top: 30px; color: #333;">Actions</h3>
+  <button id="viewUserRequests">🔍 View User Requests</button>
+  <br>
+  <button id="backToResourcesFromVolunteer" style="margin-top: 10px;">🔙 Back to Main</button>
+</div>
+
 
   <!-- New Resource Pages -->
 
@@ -218,99 +253,101 @@
     const backToLoginOptions1 = document.getElementById('backToLoginOptions1');
     const backToLoginOptions2 = document.getElementById('backToLoginOptions2');
     const backToLogin = document.getElementById('backToLogin');
-    const backToResourcesFromVolunteer = document.getElementById('backToResourcesFromVolunteer');
 
-    // Resource pages
+    const shelterAvailability = document.getElementById('shelterAvailability');
+    const foodAvailability = document.getElementById('foodAvailability');
+    const waterAvailability = document.getElementById('waterAvailability');
+    const medicalAidAvailability = document.getElementById('medicalAidAvailability');
+
     const shelterPage = document.getElementById('shelterPage');
     const foodPage = document.getElementById('foodPage');
     const waterPage = document.getElementById('waterPage');
     const medicalPage = document.getElementById('medicalPage');
 
-    // Navigate to User Login Form
+    const backToResourcesButtons = [
+      document.getElementById('backToResources'),
+      document.getElementById('backToResources2'),
+      document.getElementById('backToResources3'),
+      document.getElementById('backToResources4')
+    ];
+
+    // Show user login form
     userLoginButton.addEventListener('click', () => {
       loginPage.classList.add('hidden');
       userLoginForm.classList.remove('hidden');
     });
 
-    // Navigate to Volunteer Login Form
+    // Show volunteer login form
     volunteerLoginButton.addEventListener('click', () => {
       loginPage.classList.add('hidden');
       volunteerLoginForm.classList.remove('hidden');
     });
 
-    // Back to Login Options from User Login
+    // Back buttons
     backToLoginOptions1.addEventListener('click', () => {
       userLoginForm.classList.add('hidden');
       loginPage.classList.remove('hidden');
     });
 
-    // Back to Login Options from Volunteer Login
     backToLoginOptions2.addEventListener('click', () => {
       volunteerLoginForm.classList.add('hidden');
       loginPage.classList.remove('hidden');
     });
 
-    // Navigate to Real-Time Resources Page after Login
+    backToLogin.addEventListener('click', () => {
+      resourcesPage.classList.add('hidden');
+      loginPage.classList.remove('hidden');
+    });
+
+    // User login submit (dummy)
     document.getElementById('userLogin').addEventListener('submit', (e) => {
       e.preventDefault();
       userLoginForm.classList.add('hidden');
       resourcesPage.classList.remove('hidden');
     });
 
+    // Volunteer login submit (dummy)
     document.getElementById('volunteerLogin').addEventListener('submit', (e) => {
       e.preventDefault();
       volunteerLoginForm.classList.add('hidden');
       volunteerResourcesPage.classList.remove('hidden');
     });
 
-    // Back to Login Options from Resources Page
-    backToLogin.addEventListener('click', () => {
-      resourcesPage.classList.add('hidden');
-      loginPage.classList.remove('hidden');
-    });
-
-    // Back to Resources from Volunteer Resources Page
-    backToResourcesFromVolunteer.addEventListener('click', () => {
-      volunteerResourcesPage.classList.add('hidden');
-      resourcesPage.classList.remove('hidden');
-    });
-
-    // Navigate to specific resource pages
-    document.getElementById('shelterAvailability').addEventListener('click', () => {
+    // Navigation buttons on Resources page
+    shelterAvailability.addEventListener('click', () => {
       resourcesPage.classList.add('hidden');
       shelterPage.classList.remove('hidden');
     });
 
-    document.getElementById('foodAvailability').addEventListener('click', () => {
+    foodAvailability.addEventListener('click', () => {
       resourcesPage.classList.add('hidden');
       foodPage.classList.remove('hidden');
     });
 
-    document.getElementById('waterAvailability').addEventListener('click', () => {
+    waterAvailability.addEventListener('click', () => {
       resourcesPage.classList.add('hidden');
       waterPage.classList.remove('hidden');
     });
 
-    document.getElementById('medicalAidAvailability').addEventListener('click', () => {
+    medicalAidAvailability.addEventListener('click', () => {
       resourcesPage.classList.add('hidden');
       medicalPage.classList.remove('hidden');
     });
 
-    // Back to Resources from each resource page
-    document.getElementById('backToResources').addEventListener('click', () => {
-      shelterPage.classList.add('hidden');
-      resourcesPage.classList.remove('hidden');
+    // Back buttons on resource pages
+    backToResourcesButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        shelterPage.classList.add('hidden');
+        foodPage.classList.add('hidden');
+        waterPage.classList.add('hidden');
+        medicalPage.classList.add('hidden');
+        resourcesPage.classList.remove('hidden');
+      });
     });
-    document.getElementById('backToResources2').addEventListener('click', () => {
-      foodPage.classList.add('hidden');
-      resourcesPage.classList.remove('hidden');
-    });
-    document.getElementById('backToResources3').addEventListener('click', () => {
-      waterPage.classList.add('hidden');
-      resourcesPage.classList.remove('hidden');
-    });
-    document.getElementById('backToResources4').addEventListener('click', () => {
-      medicalPage.classList.add('hidden');
+
+    // Back button on volunteer resources page
+    document.getElementById('backToResourcesFromVolunteer').addEventListener('click', () => {
+      volunteerResourcesPage.classList.add('hidden');
       resourcesPage.classList.remove('hidden');
     });
   </script>
